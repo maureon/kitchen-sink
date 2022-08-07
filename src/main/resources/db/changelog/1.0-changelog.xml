@@ -1,0 +1,35 @@
+<databaseChangeLog 
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+  xmlns:ext="http://www.liquibase.org/xml/ns/dbchangelog-ext" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog-ext
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-ext.xsd 
+   http://www.liquibase.org/xml/ns/dbchangelog 
+   http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+    
+    <changeSet id="1" author="maureon" context="main">
+        <createTable  tableName="employees" remarks="Employees personal information">  
+            <column  name="id"  type="varchar(12)">   
+                 <constraints  nullable="false"/>  
+            </column> 
+            <column  name="firstname"  type="varchar(100)"> 
+                <constraints  nullable="false"/>  
+            </column>  
+            <column  name="middlename"  type="varchar(100)"/> 
+            <column  name="lastname"  type="varchar(100)">  
+                <constraints  nullable="false"/>  
+            </column>  
+            <column  name="birthdate"  type="date"/>  
+            <column  name="active"  type="boolean" remarks="Whether the employee is active or not"/>  
+        </createTable>  
+    </changeSet>
+    
+    <changeSet id="2" author="maureon" context="main">
+    	<addPrimaryKey     
+            columnNames="id"  
+            constraintName="employees_PK"    
+            tableName="employees"  
+          /> 
+    </changeSet>
+    
+</databaseChangeLog>
