@@ -7,7 +7,7 @@
    http://www.liquibase.org/xml/ns/dbchangelog 
    http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
     
-    <changeSet id="1" author="maureon" context="main">
+    <changeSet id="0.0.2-1" author="maureon" context="main">
         <createTable  tableName="employees" remarks="Employees personal information">  
             <column  name="id"  type="varchar(12)">   
                  <constraints  nullable="false"/>  
@@ -24,12 +24,24 @@
         </createTable>  
     </changeSet>
     
-    <changeSet id="2" author="maureon" context="main">
+    <changeSet id="0.0.2-2" author="maureon" context="main">
     	<addPrimaryKey     
             columnNames="id"  
             constraintName="employees_PK"    
             tableName="employees"  
           /> 
+    </changeSet>
+
+	<changeSet id="0.0.2-3" author="maureon" context="faker">
+		<loadData file="0.0.2-add-employees-data.csv" separator=","
+			tableName="employees" relativeToChangelogFile="true">
+			<column name="id" type="string" />
+			<column name="firstname" type="string" />
+			<column name="middlename" type="string" />
+			<column name="lastname" type="string" />
+			<column name="birthdate" type="date" />
+			<column name="active" type="boolean" />
+		</loadData>
     </changeSet>
     
 </databaseChangeLog>
